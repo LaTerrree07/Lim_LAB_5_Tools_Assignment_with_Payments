@@ -1,0 +1,288 @@
+/* =========================================================
+   assessment_beginner — Improved Modern Web App UI
+   ========================================================= */
+
+/* ---------- Reset ---------- */
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif;
+  background: #0f141b;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+}
+
+/* ---------- Container ---------- */
+body > * {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Headings ---------- */
+h2 {
+  font-size: 24px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+/* ---------- Navigation ---------- */
+div[style*="display:flex"] {
+  background: #141b24;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+div[style*="display:flex"] a {
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+div[style*="display:flex"] a:hover {
+  background: rgba(130, 170, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ---------- Dashboard Cards ---------- */
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+  margin-top: 20px;
+}
+
+ul li {
+  background: #141b24;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  font-size: 15px;
+}
+
+ul li b {
+  display: block;
+  font-size: 26px;
+  margin-top: 8px;
+  color: #82aaff;
+}
+
+/* ---------- Forms ---------- */
+form {
+  background: #141b24;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  margin-top: 20px;
+}
+
+label {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #82aaff;
+  box-shadow: 0 0 0 3px rgba(130, 170, 255, 0.25);
+}
+
+/* ---------- Buttons (Unified Style) ---------- */
+button,
+input[type="submit"],
+a.button {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid #82aaff;
+
+  background: #82aaff;
+  color: #0f141b;
+
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover,
+a.button:hover {
+  background: #6f9cff;
+  border-color: #6f9cff;
+  transform: translateY(-2px);
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #141b24;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+th {
+  background: rgba(255, 255, 255, 0.05);
+  text-align: left;
+  padding: 14px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+td {
+  padding: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ---------- Links ---------- */
+a {
+  color: #82aaff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Action Links (Look Like Buttons) ---------- */
+p a,
+a[href*="_add.php"],
+a[href*="create.php"] {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 12px;
+
+  background: #82aaff;
+  color: #0f141b;
+
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+p a:hover,
+a[href*="_add.php"]:hover,
+a[href*="create.php"]:hover {
+  background: #6f9cff;
+  transform: translateY(-2px);
+}
+
+/* ---------- Badge / Pill (Reusable) ---------- */
+.pill,
+.status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* ---------- Booking Status (Pills) ---------- */
+.status-pending {
+  background: rgba(255, 193, 7, 0.14);
+  border-color: rgba(255, 193, 7, 0.35);
+  color: rgba(255, 193, 7, 0.95);
+}
+
+.status-partial {
+  background: rgba(120, 210, 190, 0.12);
+  border-color: rgba(120, 210, 190, 0.35);
+  color: rgba(120, 210, 190, 0.95);
+}
+
+.status-paid {
+  background: rgba(46, 204, 113, 0.14);
+  border-color: rgba(46, 204, 113, 0.35);
+  color: rgba(46, 204, 113, 0.95);
+}
+
+/* ---------- Services Active/Inactive ---------- */
+.pill-active {
+  background: rgba(46, 204, 113, 0.14);
+  border-color: rgba(46, 204, 113, 0.35);
+  color: rgba(46, 204, 113, 0.95);
+}
+
+.pill-inactive {
+  background: rgba(255, 99, 132, 0.12);
+  border-color: rgba(255, 99, 132, 0.35);
+  color: rgba(255, 99, 132, 0.95);
+}
+
+/* ---------- Tool Stock Levels ---------- */
+.stock-high {
+  background: rgba(46, 204, 113, 0.14);
+  border-color: rgba(46, 204, 113, 0.35);
+  color: rgba(46, 204, 113, 0.95);
+}
+
+.stock-almost {
+  background: rgba(255, 193, 7, 0.14);
+  border-color: rgba(255, 193, 7, 0.35);
+  color: rgba(255, 193, 7, 0.95);
+}
+
+.stock-low {
+  background: rgba(255, 99, 132, 0.12);
+  border-color: rgba(255, 99, 132, 0.35);
+  color: rgba(255, 99, 132, 0.95);
+}
+
+/* ---------- Small "Edit" Link ---------- */
+.mini-link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mini-link:hover {
+  text-decoration: underline;
+}
