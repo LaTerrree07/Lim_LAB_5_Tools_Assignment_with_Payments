@@ -29,7 +29,9 @@ if (isset($_POST['save'])) {
 <?php include "../nav.php"; ?>
  
 <h2>Add Client</h2>
-<p style="color:red;"><?php echo $message; ?></p>
+<?php if ($message != "") { ?>
+  <p style="color:red;"><?php echo $message; ?></p>
+<?php } ?>
  
 <form method="post">
   <label>Full Name*</label><br>

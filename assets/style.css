@@ -1,4 +1,4 @@
-/*Base Reset */
+/* Base reset */
 * {
   box-sizing: border-box;
 }
@@ -16,12 +16,28 @@
   --accent: #82aaff;
   --accent-2: #6f9cff;
 
+  --success: rgba(46, 204, 113, 0.95);
+  --success-bg: rgba(46, 204, 113, 0.14);
+  --success-bd: rgba(46, 204, 113, 0.35);
+
+  --danger: rgba(255, 99, 132, 0.95);
+  --danger-bg: rgba(255, 99, 132, 0.12);
+  --danger-bd: rgba(255, 99, 132, 0.35);
+
+  --warn: rgba(255, 193, 7, 0.95);
+  --warn-bg: rgba(255, 193, 7, 0.14);
+  --warn-bd: rgba(255, 193, 7, 0.35);
+
+  --info: rgba(120, 210, 190, 0.95);
+  --info-bg: rgba(120, 210, 190, 0.12);
+  --info-bd: rgba(120, 210, 190, 0.35);
+
   --r-sm: 10px;
   --r-md: 12px;
   --r-lg: 16px;
 }
 
-/*Page Layout*/
+/* Page layout */
 body {
   margin: 0;
   padding: 30px;
@@ -44,10 +60,15 @@ body > * {
 h2 {
   font-size: 24px;
   margin: 0 0 18px;
-  font-weight: 600;
+  font-weight: 650;
+  letter-spacing: 0.2px;
 }
 
-/*Links*/
+p {
+  margin: 14px 0;
+}
+
+/* Links */
 a {
   color: var(--accent);
   text-decoration: none;
@@ -57,8 +78,14 @@ a:hover {
   text-decoration: underline;
 }
 
-/*Navigation*/
+/* Navigation */
 div[style*="display:flex"] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+
   background: var(--panel);
   padding: 12px;
   border-radius: var(--r-lg);
@@ -66,15 +93,19 @@ div[style*="display:flex"] {
 }
 
 div[style*="display:flex"] a {
-  display: inline-block;
-  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  padding: 0 16px;
+  line-height: 1;
+
   border-radius: var(--r-sm);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 650;
 
   color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -97,7 +128,7 @@ hr {
   margin: 14px 0 18px;
 }
 
-/*Dashboard Cards */
+/* Dashboard cards */
 ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -114,6 +145,7 @@ ul li {
   border-radius: var(--r-lg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 ul li b {
@@ -123,51 +155,24 @@ ul li b {
   color: var(--accent);
 }
 
-/*Forms*/
-form {
-  background: var(--panel);
-  padding: 25px;
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow);
-  margin-top: 20px;
+/* Action row layout */
+p:has(a) {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: var(--r-sm);
-
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.92);
-
-  margin-bottom: 18px;
-  font-size: 14px;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: rgba(130, 170, 255, 0.7);
-  box-shadow: 0 0 0 3px rgba(130, 170, 255, 0.22);
-}
-
+/* Buttons and primary links */
 button,
 input[type="submit"],
 p a,
 a[href*="_add.php"],
 a[href*="create.php"] {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 12px 18px;
   border-radius: var(--r-md);
 
@@ -175,7 +180,7 @@ a[href*="create.php"] {
   background: var(--accent);
   color: var(--bg);
 
-  font-weight: 700;
+  font-weight: 750;
   font-size: 14px;
   text-decoration: none;
   text-align: center;
@@ -198,153 +203,18 @@ a[href*="create.php"]:hover {
   transform: translateY(-2px);
 }
 
-p {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+/* Secondary table action links */
+td a[href*="edit.php"],
+td a[href*="assign"],
+td a[href*="view"],
+td a[href*="delete"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-/*Tables*/
-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  background: var(--panel);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-
-  margin-top: 20px;
-  box-shadow: var(--shadow);
-}
-
-th {
-  text-align: left;
-  padding: 14px;
-  font-size: 13px;
-
-  background: var(--panel-2);
-  color: rgba(255, 255, 255, 0.75);
-}
-
-td {
-  padding: 14px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.88);
-  border-top: 1px solid var(--border-soft);
-}
-
-tr:hover td {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-/*Badges / Status Pills*/
-.pill,
-.status {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-/* Booking Status */
-.status-pending {
-  background: rgba(255, 193, 7, 0.14);
-  border-color: rgba(255, 193, 7, 0.35);
-  color: rgba(255, 193, 7, 0.95);
-}
-
-.status-partial {
-  background: rgba(120, 210, 190, 0.12);
-  border-color: rgba(120, 210, 190, 0.35);
-  color: rgba(120, 210, 190, 0.95);
-}
-
-.status-paid {
-  background: rgba(46, 204, 113, 0.14);
-  border-color: rgba(46, 204, 113, 0.35);
-  color: rgba(46, 204, 113, 0.95);
-}
-
-/* Services Active/Inactive */
-.pill-active {
-  background: rgba(46, 204, 113, 0.14);
-  border-color: rgba(46, 204, 113, 0.35);
-  color: rgba(46, 204, 113, 0.95);
-}
-
-.pill-inactive {
-  background: rgba(255, 99, 132, 0.12);
-  border-color: rgba(255, 99, 132, 0.35);
-  color: rgba(255, 99, 132, 0.95);
-}
-
-/* Tool Stock Levels */
-.stock-high {
-  background: rgba(46, 204, 113, 0.14);
-  border-color: rgba(46, 204, 113, 0.35);
-  color: rgba(46, 204, 113, 0.95);
-}
-
-.stock-almost {
-  background: rgba(255, 193, 7, 0.14);
-  border-color: rgba(255, 193, 7, 0.35);
-  color: rgba(255, 193, 7, 0.95);
-}
-
-.stock-low {
-  background: rgba(255, 99, 132, 0.12);
-  border-color: rgba(255, 99, 132, 0.35);
-  color: rgba(255, 99, 132, 0.95);
-}
-
-/* Small action links inside tables */
-.mini-link {
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.mini-link:hover {
-  text-decoration: underline;
-}
-
-messages p[style*="color:red"] {
-  margin: 12px 0 16px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(255, 99, 132, 0.12);
-  border: 1px solid rgba(255, 99, 132, 0.35);
-  color: rgba(255, 160, 185, 0.98);
-  font-weight: 700;
-}
-
-tables table[border] {
-  border: 0;
-}
-
-table[border] td,
-table[border] th {
-  border: 0;
-}
-
-table[border] tr td,
-table[border] tr th {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-table[border] tr:first-child th {
-  border-top: 0;
-}
-
-actions td a[href*="edit.php"] {
-  display: inline-block;
   padding: 8px 12px;
   border-radius: 12px;
+
   font-weight: 700;
   font-size: 13px;
   text-decoration: none;
@@ -359,13 +229,202 @@ actions td a[href*="edit.php"] {
     border-color 0.2s ease;
 }
 
-td a[href*="edit.php"]:hover {
+td a[href*="edit.php"]:hover,
+td a[href*="assign"]:hover,
+td a[href*="view"]:hover,
+td a[href*="delete"]:hover {
   text-decoration: none;
   background: rgba(130, 170, 255, 0.16);
   border-color: rgba(130, 170, 255, 0.35);
   transform: translateY(-2px);
 }
 
-forms form button[type="submit"] {
+/* Forms */
+form {
+  background: var(--panel);
+  padding: 25px;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  margin-top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--r-sm);
+
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.92);
+
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(130, 170, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(130, 170, 255, 0.22);
+}
+
+form button[type="submit"],
+form input[type="submit"] {
   min-width: 140px;
+  margin-top: 6px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  background: var(--panel);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+th {
+  text-align: left;
+  padding: 14px;
+  font-size: 13px;
+
+  background: var(--panel-2);
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.25px;
+}
+
+td {
+  padding: 14px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.88);
+  border-top: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+
+tr:hover td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Messages */
+p[style*="color:red"] {
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-bd);
+  color: rgba(255, 160, 185, 0.98);
+  font-weight: 750;
+}
+
+/* Status pills */
+.pill,
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Booking status */
+.status-pending {
+  background: var(--warn-bg);
+  border-color: var(--warn-bd);
+  color: var(--warn);
+}
+
+.status-partial {
+  background: var(--info-bg);
+  border-color: var(--info-bd);
+  color: var(--info);
+}
+
+.status-paid {
+  background: var(--success-bg);
+  border-color: var(--success-bd);
+  color: var(--success);
+}
+
+/* Services yes no indicator */
+.pill-active,
+.yes-pill {
+  background: var(--success-bg);
+  border-color: var(--success-bd);
+  color: var(--success);
+}
+
+.pill-inactive,
+.no-pill {
+  background: var(--danger-bg);
+  border-color: var(--danger-bd);
+  color: var(--danger);
+}
+
+/* Content alignment */
+h2,
+ul,
+p {
+  padding-left: 100px;
+}
+
+@media (max-width: 900px) {
+  h2,
+  ul,
+  p {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  body {
+    padding: 18px;
+  }
+
+  div[style*="display:flex"] {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  div[style*="display:flex"] a {
+    height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+  }
 }
