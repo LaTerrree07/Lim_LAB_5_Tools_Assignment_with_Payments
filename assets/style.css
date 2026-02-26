@@ -506,3 +506,37 @@ table th,
 table td {
   line-height: 1.25;
 }
+p[style*="color:green"] {
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--success-bg);
+  border: 1px solid var(--success-bd);
+  color: rgba(170, 255, 210, 0.98);
+  font-weight: 750;
+}
+
+p[style*="color:green"]:empty {
+  display: none;
+}
+
+td a[href*="payment_process.php"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-weight: 750;
+  font-size: 13px;
+  text-decoration: none;
+  background: rgba(130, 170, 255, 0.14);
+  border: 1px solid rgba(130, 170, 255, 0.32);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+td a[href*="payment_process.php"]:hover {
+  text-decoration: none;
+  background: rgba(130, 170, 255, 0.22);
+  border-color: rgba(130, 170, 255, 0.45);
+  transform: translateY(-2px);
+}
