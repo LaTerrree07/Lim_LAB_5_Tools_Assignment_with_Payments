@@ -428,3 +428,81 @@ p {
     padding: 12px;
   }
 }
+
+/* Bookings status styling */
+td .status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/*booking status colors clear */
+td .status-pending {
+  background: var(--warn-bg);
+  border-color: var(--warn-bd);
+  color: var(--warn);
+}
+
+td .status-partial {
+  background: var(--info-bg);
+  border-color: var(--info-bd);
+  color: var(--info);
+}
+
+td .status-paid {
+  background: var(--success-bg);
+  border-color: var(--success-bd);
+  color: var(--success);
+}
+
+/*"Process Payment*/
+td a[href*="payment_process.php"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 12px;
+  border-radius: 12px;
+
+  font-weight: 750;
+  font-size: 13px;
+  text-decoration: none;
+
+  background: rgba(130, 170, 255, 0.14);
+  border: 1px solid rgba(130, 170, 255, 0.32);
+  color: rgba(255, 255, 255, 0.9);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+td a[href*="payment_process.php"]:hover {
+  text-decoration: none;
+  background: rgba(130, 170, 255, 0.22);
+  border-color: rgba(130, 170, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Make numeric columns look cleaner in bookings tables */
+td:nth-child(5),
+td:nth-child(6) {
+  white-space: nowrap;
+}
+
+table th,
+table td {
+  line-height: 1.25;
+}
