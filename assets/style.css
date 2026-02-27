@@ -1,8 +1,6 @@
-/* Base reset */
-* {
-  box-sizing: border-box;
-}
-
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
 :root {
   --bg: #0f141b;
   --panel: #141b24;
@@ -35,12 +33,25 @@
   --r-sm: 10px;
   --r-md: 12px;
   --r-lg: 16px;
+
+  /* layout */
+  --page-max: 1100px;
+  --page-pad: 30px;
+  --content-indent: 100px;
 }
 
-/* Page layout */
+/* ==========================================================================
+   Base / reset
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 30px;
+  padding: var(--page-pad);
   font-family:
     system-ui,
     -apple-system,
@@ -53,8 +64,9 @@ body {
 }
 
 body > * {
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
@@ -68,17 +80,49 @@ p {
   margin: 14px 0;
 }
 
-/* Links */
 a {
   color: var(--accent);
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
 
-/* Navigation */
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-soft);
+  margin: 14px 0 18px;
+}
+
+/* ==========================================================================
+   Layout helpers (keeps your current indentation behavior)
+   ========================================================================== */
+h2,
+ul,
+p {
+  padding-left: var(--content-indent);
+}
+
+@media (max-width: 900px) {
+  h2,
+  ul,
+  p {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 18px;
+  }
+}
+
+/* ==========================================================================
+   Navigation
+   NOTE: This targets your current nav.php inline style safely.
+   Recommended: replace inline style with class="nav" (see below).
+   ========================================================================== */
 div[style*="display:flex"] {
   display: flex;
   align-items: center;
@@ -96,7 +140,6 @@ div[style*="display:flex"] a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   height: 40px;
   padding: 0 16px;
   line-height: 1;
@@ -122,18 +165,25 @@ div[style*="display:flex"] a:hover {
   transform: translateY(-2px);
 }
 
-hr {
-  border: none;
-  border-top: 1px solid var(--border-soft);
-  margin: 14px 0 18px;
+@media (max-width: 640px) {
+  div[style*="display:flex"] {
+    gap: 8px;
+    padding: 10px;
+  }
+  div[style*="display:flex"] a {
+    height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
 }
 
-/* Dashboard cards */
+/* ==========================================================================
+   Dashboard cards
+   ========================================================================== */
 ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
-
   padding: 0;
   margin: 20px 0 0;
   list-style: none;
@@ -155,15 +205,11 @@ ul li b {
   color: var(--accent);
 }
 
-/* Action row layout */
-p:has(a) {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-}
+/* ==========================================================================
+   Buttons / links
+   ========================================================================== */
 
-/* Buttons and primary links */
+/* Primary CTAs (your “Add” + “Create” links and form buttons) */
 button,
 input[type="submit"],
 p a,
@@ -175,7 +221,6 @@ a[href*="create.php"] {
 
   padding: 12px 18px;
   border-radius: var(--r-md);
-
   border: 1px solid var(--accent);
   background: var(--accent);
   color: var(--bg);
@@ -203,11 +248,14 @@ a[href*="create.php"]:hover {
   transform: translateY(-2px);
 }
 
-/* Secondary table action links */
+/* Table action links (Edit, Deactivate, Process Payment, etc.) */
 td a[href*="edit.php"],
+td a[href*="payment_process.php"],
 td a[href*="assign"],
 td a[href*="view"],
-td a[href*="delete"] {
+td a[href*="delete"],
+td a[href*="deactivate"],
+td a[href*="remove"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -230,16 +278,33 @@ td a[href*="delete"] {
 }
 
 td a[href*="edit.php"]:hover,
+td a[href*="payment_process.php"]:hover,
 td a[href*="assign"]:hover,
 td a[href*="view"]:hover,
-td a[href*="delete"]:hover {
+td a[href*="delete"]:hover,
+td a[href*="deactivate"]:hover,
+td a[href*="remove"]:hover {
   text-decoration: none;
   background: rgba(130, 170, 255, 0.16);
   border-color: rgba(130, 170, 255, 0.35);
   transform: translateY(-2px);
 }
 
-/* Forms */
+/* Make Process Payment slightly more “primary” than other table actions */
+td a[href*="payment_process.php"] {
+  background: rgba(130, 170, 255, 0.14);
+  border-color: rgba(130, 170, 255, 0.32);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+td a[href*="payment_process.php"]:hover {
+  background: rgba(130, 170, 255, 0.22);
+  border-color: rgba(130, 170, 255, 0.45);
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
 form {
   background: var(--panel);
   padding: 25px;
@@ -290,7 +355,9 @@ form input[type="submit"] {
   margin-top: 6px;
 }
 
-/* Tables */
+/* ==========================================================================
+   Tables
+   ========================================================================== */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -301,15 +368,18 @@ table {
 
   margin-top: 20px;
   box-shadow: var(--shadow);
-
   border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+th,
+td {
+  line-height: 1.25;
 }
 
 th {
   text-align: left;
   padding: 14px;
   font-size: 13px;
-
   background: var(--panel-2);
   color: rgba(255, 255, 255, 0.78);
   letter-spacing: 0.25px;
@@ -327,7 +397,22 @@ tr:hover td {
   background: rgba(255, 255, 255, 0.03);
 }
 
-/* Messages */
+@media (max-width: 640px) {
+  th,
+  td {
+    padding: 12px;
+  }
+}
+
+/* Keep numeric columns cleaner in bookings tables */
+td:nth-child(5),
+td:nth-child(6) {
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Feedback messages (keeps compatibility with inline style messages)
+   ========================================================================== */
 p[style*="color:red"] {
   margin: 12px 0 16px;
   padding: 12px 14px;
@@ -338,174 +423,6 @@ p[style*="color:red"] {
   font-weight: 750;
 }
 
-/* Status pills */
-.pill,
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 6px 10px;
-  border-radius: 999px;
-
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.35px;
-  text-transform: uppercase;
-
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-/* Booking status */
-.status-pending {
-  background: var(--warn-bg);
-  border-color: var(--warn-bd);
-  color: var(--warn);
-}
-
-.status-partial {
-  background: var(--info-bg);
-  border-color: var(--info-bd);
-  color: var(--info);
-}
-
-.status-paid {
-  background: var(--success-bg);
-  border-color: var(--success-bd);
-  color: var(--success);
-}
-
-/* Services yes no indicator */
-.pill-active,
-.yes-pill {
-  background: var(--success-bg);
-  border-color: var(--success-bd);
-  color: var(--success);
-}
-
-.pill-inactive,
-.no-pill {
-  background: var(--danger-bg);
-  border-color: var(--danger-bd);
-  color: var(--danger);
-}
-
-/* Content alignment */
-h2,
-ul,
-p {
-  padding-left: 100px;
-}
-
-@media (max-width: 900px) {
-  h2,
-  ul,
-  p {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-}
-
-/* Small screens */
-@media (max-width: 640px) {
-  body {
-    padding: 18px;
-  }
-
-  div[style*="display:flex"] {
-    gap: 8px;
-    padding: 10px;
-  }
-
-  div[style*="display:flex"] a {
-    height: 38px;
-    padding: 0 12px;
-    font-size: 13px;
-  }
-
-  th,
-  td {
-    padding: 12px;
-  }
-}
-
-/* Bookings status styling */
-td .status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 6px 10px;
-  border-radius: 999px;
-
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.35px;
-  text-transform: uppercase;
-
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/*booking status colors clear */
-td .status-pending {
-  background: var(--warn-bg);
-  border-color: var(--warn-bd);
-  color: var(--warn);
-}
-
-td .status-partial {
-  background: var(--info-bg);
-  border-color: var(--info-bd);
-  color: var(--info);
-}
-
-td .status-paid {
-  background: var(--success-bg);
-  border-color: var(--success-bd);
-  color: var(--success);
-}
-
-/*"Process Payment*/
-td a[href*="payment_process.php"] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 8px 12px;
-  border-radius: 12px;
-
-  font-weight: 750;
-  font-size: 13px;
-  text-decoration: none;
-
-  background: rgba(130, 170, 255, 0.14);
-  border: 1px solid rgba(130, 170, 255, 0.32);
-  color: rgba(255, 255, 255, 0.9);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
-}
-
-td a[href*="payment_process.php"]:hover {
-  text-decoration: none;
-  background: rgba(130, 170, 255, 0.22);
-  border-color: rgba(130, 170, 255, 0.45);
-  transform: translateY(-2px);
-}
-
-/* Make numeric columns look cleaner in bookings tables */
-td:nth-child(5),
-td:nth-child(6) {
-  white-space: nowrap;
-}
-
-table th,
-table td {
-  line-height: 1.25;
-}
 p[style*="color:green"] {
   margin: 12px 0 16px;
   padding: 12px 14px;
@@ -520,23 +437,56 @@ p[style*="color:green"]:empty {
   display: none;
 }
 
-td a[href*="payment_process.php"] {
+/* ==========================================================================
+   Pills / statuses
+   ========================================================================== */
+.pill,
+.status {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-weight: 750;
-  font-size: 13px;
-  text-decoration: none;
-  background: rgba(130, 170, 255, 0.14);
-  border: 1px solid rgba(130, 170, 255, 0.32);
-  color: rgba(255, 255, 255, 0.9);
+  gap: 8px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-td a[href*="payment_process.php"]:hover {
-  text-decoration: none;
-  background: rgba(130, 170, 255, 0.22);
-  border-color: rgba(130, 170, 255, 0.45);
-  transform: translateY(-2px);
+/* Booking statuses */
+.status-pending {
+  background: var(--warn-bg);
+  border-color: var(--warn-bd);
+  color: var(--warn);
+}
+.status-partial {
+  background: var(--info-bg);
+  border-color: var(--info-bd);
+  color: var(--info);
+}
+.status-paid {
+  background: var(--success-bg);
+  border-color: var(--success-bd);
+  color: var(--success);
+}
+
+/* Services active/inactive pills (also supports yes-pill/no-pill aliases) */
+.pill-active,
+.yes-pill {
+  background: var(--success-bg);
+  border-color: var(--success-bd);
+  color: var(--success);
+}
+
+.pill-inactive,
+.no-pill {
+  background: var(--danger-bg);
+  border-color: var(--danger-bd);
+  color: var(--danger);
 }

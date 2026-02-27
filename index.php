@@ -22,10 +22,10 @@ $revenue = $revRow['s'];
 <h2>Dashboard</h2>
  
 <ul>
-  <li>Total Clients: <b><?php echo $clients; ?></b></li>
-  <li>Total Services: <b><?php echo $services; ?></b></li>
-  <li>Total Bookings: <b><?php echo $bookings; ?></b></li>
-  <li>Total Revenue: <b>₱<?php echo number_format($revenue,2); ?></b></li>
+  <li>Total Clients <b><?php echo $clients; ?></b></li>
+  <li>Total Services <b><?php echo $services; ?></b></li>
+  <li>Total Bookings <b><?php echo $bookings; ?></b></li>
+  <li>Total Revenue <b>₱<?php echo number_format($revenue,2); ?></b></li>
 </ul>
 
 <br>
