@@ -36,7 +36,7 @@ $bookings = mysqli_query($conn, "SELECT booking_id FROM bookings ORDER BY bookin
 <body>
 <?php include "../nav.php"; ?>
 
-<h2>Tools Inventory</h2>
+<h1>Tools Inventory</h1>
 
 <?php if ($message != "") { ?>
   <p style="color:green;"><?php echo $message; ?></p>

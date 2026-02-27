@@ -38,7 +38,7 @@ $result = mysqli_query($conn, "SELECT * FROM services ORDER BY service_id DESC")
 <?php include "../nav.php"; ?>
  
  
-<h2>Services</h2>
+<h1>Services</h1>
  
  
 <p>

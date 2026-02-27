@@ -10,7 +10,7 @@ $result = mysqli_query($conn, "SELECT * FROM clients ORDER BY client_id DESC");
 <body>
 <?php include "../nav.php"; ?>
  
-<h2>Clients</h2>
+<h1>Clients</h1>
 <p><a href="clients_add.php">+ Add Client</a></p>
  
 <table border="1" cellpadding="8">

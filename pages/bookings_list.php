@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $sql);
 <body>
 <?php include "../nav.php"; ?>
 
-<h2>Bookings</h2>
+<h1>Bookings</h1>
 <p><a href="bookings_create.php">+ Create Booking</a></p>
 
 <table border="1" cellpadding="8">

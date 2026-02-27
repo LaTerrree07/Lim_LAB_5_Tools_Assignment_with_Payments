@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $sql);
 <body>
 <?php include "../nav.php"; ?>
 
-<h2>Payments</h2>
+<h1>Payments</h1>
 
 <table border="1" cellpadding="8">
   <tr>
